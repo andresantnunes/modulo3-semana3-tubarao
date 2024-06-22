@@ -1,14 +1,15 @@
 FROM openjdk:17-jdk-slim-buster AS build
 
-COPY pom.xml mvnw ./
+COPY pom.xml ./
+COPY mvnw ./
 COPY .mvn .mvn
 
-RUN dos2unix ./mvnw dependency:resolve
+RUN ./mvnw dependency:resolve
 
 COPY src src
 
 # mesma função do install, gerar o .jar
-RUN dos2unix ./mvnw mvn package 
+RUN ./mvnw mvn package 
 
 FROM openjdk:17-jdk-slim-buster
 WORKDIR app
