@@ -4,7 +4,6 @@ COPY pom.xml mvnw ./
 COPY .mvn .mvn
 
 RUN apt-get update -y
-RUN apt-get install -y maven
 RUN mvn dependency:resolve
 
 COPY src src
