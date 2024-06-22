@@ -1,15 +1,11 @@
 FROM openjdk:17-jdk-slim-buster AS build
 
-COPY pom.xml ./
-COPY mvnw ./
-COPY .mvn .mvn
 
+COPY . .
 RUN chmod 700 mvnw
 
-COPY src src
-
 # mesma função do install, gerar o .jar
-RUN ./mvnw mvn package 
+RUN ./mvnw clean package 
 
 FROM openjdk:17-jdk-slim-buster
 WORKDIR app
