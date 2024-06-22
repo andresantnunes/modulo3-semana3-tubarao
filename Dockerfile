@@ -5,7 +5,6 @@ COPY mvnw ./
 COPY .mvn .mvn
 
 RUN chmod 700 mvnw
-RUN ./mvnw clean install
 
 COPY src src
 
