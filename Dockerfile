@@ -3,6 +3,7 @@ FROM openjdk:17-jdk-slim AS build
 COPY pom.xml mvnw ./
 COPY .mvn .mvn
 
+RUN apt-get update
 RUN apt-get install maven
 RUN mvn dependency:resolve
 
