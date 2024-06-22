@@ -15,4 +15,8 @@ jobs:
     steps:
     - uses: actions/checkout@v4
     - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag andresnu/image-git:$(date +%s)
+      run: docker build . --file Dockerfile --tag andresnu/image-git:latest
+
+    - name: Push Docker image
+      run: |
+        docker push andresnu/image-git:latest
