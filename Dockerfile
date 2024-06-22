@@ -4,7 +4,8 @@ COPY pom.xml ./
 COPY mvnw ./
 COPY .mvn .mvn
 
-RUN ./mvnw dependency:resolve
+RUN chmod 700 mvnw
+RUN ./mvnw clean install
 
 COPY src src
 
