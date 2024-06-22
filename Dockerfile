@@ -2,12 +2,14 @@ FROM openjdk:17-jdk-slim AS build
 
 COPY pom.xml mvnw ./
 COPY .mvn .mvn
-RUN ./mvnw dependency:resolve
+
+RUN apt-get install maven
+RUN mvn dependency:resolve
 
 COPY src src
 
 # mesma função do install, gerar o .jar
-RUN ./mvnw package 
+RUN mvn package 
 
 FROM openjdk:17-jdk-slim
 WORKDIR app
